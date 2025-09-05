@@ -11,7 +11,11 @@ dotenv.config();
 const app = express();
 
 // ✅ Enable CORS so frontend can make requests (useful during development)
-app.use(cors());
+app.use(cors({
+  origin: ["https://small-register.vercel.app"], // frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 // ✅ Parse incoming JSON requests
 app.use(express.json());
